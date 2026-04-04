@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملفي الشخصي - My Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    :root {
+        --primary: #1e3a8a;
+        --secondary: #0ea5e9;
+        --accent: #f97316;
+        --dark: #0f172a;
+        --light: #f8fafc;
+        --text: #1e293b;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Tajawal', 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #f0f9ff 0%, #f0f4f8 100%);
+        color: var(--text);
+        overflow-x: hidden;
+    }
+
+    /* Background Animation */
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    /* Navbar */
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 15px 30px;
+    }
+
+    nav .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: 900;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    nav a {
+        color: var(--text);
+        text-decoration: none;
+        margin: 0 20px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        font-size: 14px;
+    }
+
+    nav a:hover {
+        color: var(--secondary);
+    }
+
+    /* Hero Section */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0f4f8 100%);
+        position: relative;
+        overflow: hidden;
+        margin-top: 70px;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(14, 165, 233, 0.2), transparent);
+        border-radius: 50%;
+        top: 10%;
+        right: 5%;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .hero::after {
+        content: '';
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(30, 58, 138, 0.1), transparent);
+        border-radius: 50%;
+        bottom: 10%;
+        left: 5%;
+        animation: float 8s ease-in-out infinite;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        max-width: 900px;
+        animation: slideInRight 1s ease-out;
+    }
+
+    .hero h1 {
+        font-size: 72px;
+        font-weight: 900;
+        color: var(--dark);
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    .hero .subtitle {
+        font-size: 32px;
+        color: var(--secondary);
+        font-weight: 300;
+        margin-bottom: 30px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .hero p {
+        font-size: 18px;
+        color: #64748b;
+        margin-bottom: 50px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+    }
+
+    /* Social Links Section */
+    .social-section {
+        padding: 100px 30px;
+        background: var(--light);
+        position: relative;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 48px;
+        font-weight: 900;
+        color: var(--dark);
+        margin-bottom: 80px;
+        position: relative;
+    }
+
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        margin: 20px auto 0;
+        border-radius: 3px;
+    }
+
+    .social-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+    }
+
+    .social-card {
+        background: white;
+        padding: 50px 30px;
+        border-radius: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .social-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(30, 58, 138, 0.05));
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .social-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        border-color: var(--secondary);
+    }
+
+    .social-card:hover::before {
+        opacity: 1;
+    }
+
+    .social-icon {
+        font-size: 60px;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .social-name {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .social-handle {
+        color: var(--secondary);
+        font-size: 16px;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .social-card a {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 12px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 2;
+    }
+
+    .social-card a:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 25px rgba(14, 165, 233, 0.4);
+    }
+
+    /* Stats Section */
+    .stats-section {
+        padding: 100px 30px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+    }
+
+    .stats-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 50px;
+        text-align: center;
+    }
+
+    .stat-item h3 {
+        font-size: 48px;
+        font-weight: 900;
+        margin-bottom: 10px;
+    }
+
+    .stat-item p {
+        font-size: 16px;
+        opacity: 0.9;
+    }
+
+    /* Footer */
+    footer {
+        background: var(--dark);
+        color: white;
+        padding: 50px 30px;
+        text-align: center;
+    }
+
+    footer p {
+        margin-bottom: 15px;
+        opacity: 0.8;
+    }
+
+    .footer-links {
+        margin: 20px 0;
+    }
+
+    .footer-links a {
+        color: var(--secondary);
+        text-decoration: none;
+        margin: 0 15px;
+        transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: white;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        nav {
+            padding: 15px 20px;
+        }
+
+        nav a {
+            margin: 0 10px;
+            font-size: 12px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+        }
+
+        .hero .subtitle {
+            font-size: 24px;
+        }
+
+        .hero p {
+            font-size: 16px;
+        }
+
+        .section-title {
+            font-size: 36px;
+        }
+
+        .social-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .hero::before {
+            width: 250px;
+            height: 250px;
+        }
+
+        .hero::after {
+            width: 200px;
+            height: 200px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero h1 {
+            font-size: 36px;
+        }
+
+        .hero .subtitle {
+            font-size: 20px;
+        }
+
+        .section-title {
+            font-size: 28px;
+        }
+
+        nav {
+            display: none;
+        }
+
+        .hero {
+            margin-top: 0;
+            padding-top: 20px;
+        }
+    }
+
+    /* Loading Animation */
+    @keyframes shimmer {
+        0% { background-position: -1000px 0; }
+        100% { background-position: 1000px 0; }
+    }
+
+    .loading {
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+</style>
+```
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">MY PROFILE</div>
+            <div>
+                <a href="#home">الرئيسية</a>
+                <a href="#social">التواصل الاجتماعي</a>
+                <a href="#stats">الإحصائيات</a>
+                <a href="#contact">تواصل معي</a>
+            </div>
+        </div>
+    </nav>
+
+```
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>مرحباً بك! 👋</h1>
+        <div class="subtitle">Welcome to My Profile</div>
+        <p>اكتشف معلوماتي والتواصل معي عبر جميع منصات التواصل الاجتماعي</p>
+    </div>
+</section>
+
+<!-- Social Links Section -->
+<section class="social-section" id="social">
+    <h2 class="section-title">تابعني على وسائل التواصل 📱</h2>
+    
+    <div class="social-grid">
+        <!-- Instagram -->
+        <div class="social-card">
+            <div class="social-icon">📸</div>
+            <div class="social-name">Instagram</div>
+            <div class="social-handle">@yourprofile</div>
+            <a href="https://instagram.com/yourprofile" target="_blank">زيارة الملف</a>
+        </div>
+
+        <!-- Twitter/X -->
+        <div class="social-card">
+            <div class="social-icon">𝕏</div>
+            <div class="social-name">Twitter / X</div>
+            <div class="social-handle">@yourprofile</div>
+            <a href="https://twitter.com/yourprofile" target="_blank">زيارة الملف</a>
+        </div>
+
+        <!-- TikTok -->
+        <div class="social-card">
+            <div class="social-icon">🎵</div>
+            <div class="social-name">TikTok</div>
+            <div class="social-handle">@yourprofile</div>
+            <a href="https://tiktok.com/@yourprofile" target="_blank">زيارة الملف</a>
+        </div>
+
+        <!-- YouTube -->
+        <div class="social-card">
+            <div class="social-icon">▶️</div>
+            <div class="social-name">YouTube</div>
+            <div class="social-handle">Your Channel</div>
+            <a href="https://youtube.com/@yourprofile" target="_blank">زيارة القناة</a>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="social-card">
+            <div class="social-icon">💼</div>
+            <div class="social-name">LinkedIn</div>
+            <div class="social-handle">yourprofile</div>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank">زيارة الملف</a>
+        </div>
+
+        <!-- Discord -->
+        <div class="social-card">
+            <div class="social-icon">💬</div>
+            <div class="social-name">Discord</div>
+            <div class="social-handle">YourName#1234</div>
+            <a href="https://discord.com/users/yourprofile" target="_blank">إضافة صديق</a>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section" id="stats">
+    <div class="stats-grid">
+        <div class="stat-item">
+            <h3>10K+</h3>
+            <p>Followers</p>
+        </div>
+        <div class="stat-item">
+            <h3>250+</h3>
+            <p>Projects</p>
+        </div>
+        <div class="stat-item">
+            <h3>100+</h3>
+            <p>Collaborations</p>
+        </div>
+        <div class="stat-item">
+            <h3>99%</h3>
+            <p>Satisfaction</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" style="padding: 100px 30px; background: var(--light); text-align: center;">
+    <h2 class="section-title">تواصل معي مباشرة ✉️</h2>
+    <p style="font-size: 18px; color: #64748b; max-width: 600px; margin: 0 auto;">
+        إذا كان لديك أي استفسار أو تريد التعاون معي، لا تتردد في التواصل
+    </p>
+    <div style="margin-top: 40px;">
+        <a href="mailto:your@email.com" style="
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin: 10px;
+        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            📧 أرسل بريد إلكتروني
+        </a>
+        <a href="https://wa.me/966XXXXXXXXX" target="_blank" style="
+            display: inline-block;
+            background: #25d366;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin: 10px;
+        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            💬 واتس آب
+        </a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 My Profile. جميع الحقوق محفوظة.</p>
+    <div class="footer-links">
+        <a href="#home">الرئيسية</a>
+        <a href="#social">التواصل</a>
+        <a href="#contact">اتصل بي</a>
+    </div>
+    <p style="margin-top: 20px; font-size: 14px; opacity: 0.6;">Made with ❤️</p>
+</footer>
+
+<script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Add animation on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'slideInRight 0.8s ease-out forwards';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.social-card').forEach(card => {
+        observer.observe(card);
+    });
+</script>
+```
+
+</body>
+</html>

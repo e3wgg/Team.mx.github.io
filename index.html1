@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هجوله أونلاين - تثبيت</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(243, 156, 18, 0.2);
+            z-index: 1000;
+            padding: 15px 30px;
+            border-bottom: 1px solid rgba(243, 156, 18, 0.3);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f39c12, #e8b84b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #f39c12;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 30px 60px;
+        }
+
+        /* Hero Game Section */
+        .game-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.05) 0%, rgba(196, 30, 58, 0.05) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(243, 156, 18, 0.2);
+        }
+
+        .game-image-section {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .game-large-image {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(243, 156, 18, 0.3);
+            border: 3px solid #f39c12;
+            animation: floatImage 3s ease-in-out infinite;
+        }
+
+        @keyframes floatImage {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .game-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .game-title {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f39c12, #e8b84b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .game-subtitle {
+            font-size: 16px;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .rating-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(243, 156, 18, 0.2);
+            border-top: 1px solid rgba(243, 156, 18, 0.2);
+        }
+
+        .stars {
+            display: flex;
+            gap: 5px;
+            font-size: 20px;
+        }
+
+        .rating-text {
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #f39c12, #e8b84b);
+            color: #0f0f0f;
+            padding: 20px 50px;
+            border: none;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 50px rgba(243, 156, 18, 0.4);
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(243, 156, 18, 0.6);
+        }
+
+        .download-btn:active {
+            transform: translateY(-2px);
+        }
+
+        /* Screenshots Section */
+        .screenshots-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #fff;
+            border-bottom: 2px solid #f39c12;
+            padding-bottom: 15px;
+        }
+
+        .screenshots-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .screenshot-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #f39c12;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(243, 156, 18, 0.3);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Features Section */
+        .features-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.1) 0%, rgba(196, 30, 58, 0.1) 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(243, 156, 18, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.15) 0%, rgba(196, 30, 58, 0.15) 100%);
+            border-color: #f39c12;
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #f39c12;
+        }
+
+        .feature-description {
+            font-size: 14px;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Description Section */
+        .description-section {
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.08) 0%, rgba(196, 30, 58, 0.08) 100%);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(243, 156, 18, 0.2);
+            margin-bottom: 60px;
+        }
+
+        .description-section .section-title {
+            margin-bottom: 20px;
+        }
+
+        .description-text {
+            font-size: 16px;
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        .feature-item-icon {
+            color: #f39c12;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .feature-item-text {
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        /* Updates Section */
+        .updates-section {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            margin-bottom: 60px;
+        }
+
+        .updates-section .section-title {
+            border-bottom-color: #0ea5e9;
+            color: #0ea5e9;
+        }
+
+        .update-item {
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-right: 3px solid #0ea5e9;
+            display: flex;
+            gap: 15px;
+        }
+
+        .update-icon {
+            color: #0ea5e9;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .update-text {
+            font-size: 14px;
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        /* Footer Section */
+        .footer-section {
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.08) 0%, rgba(196, 30, 58, 0.08) 100%);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(243, 156, 18, 0.2);
+            text-align: center;
+        }
+
+        .footer-section .section-title {
+            border-bottom-color: #f39c12;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #f39c12;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 10px 20px;
+            border: 1px solid #f39c12;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: #f39c12;
+            color: #0f0f0f;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #f39c12;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 10px 20px;
+            border: 1px solid #f39c12;
+            border-radius: 8px;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .back-link:hover {
+            background: #f39c12;
+            color: #0f0f0f;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .game-hero {
+                grid-template-columns: 1fr;
+                padding: 20px;
+                gap: 30px;
+            }
+
+            .game-title {
+                font-size: 36px;
+            }
+
+            .game-subtitle {
+                font-size: 14px;
+            }
+
+            .main-container {
+                padding: 80px 20px 40px;
+            }
+
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+
+            .screenshots-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                margin: 0 8px;
+                font-size: 12px;
+            }
+
+            .download-btn {
+                padding: 18px 30px;
+                font-size: 18px;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .game-hero, .screenshots-section, .features-section, .description-section, .updates-section, .footer-section {
+            animation: slideInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="container">
+            <div class="logo">Team MX</div>
+            <a href="index.html">← العودة</a>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+
+        <!-- Game Hero Section -->
+        <div class="game-hero">
+            <!-- Left: Game Image -->
+            <div class="game-image-section">
+                <img src="game-banner.png" alt="هجوله أونلاين" class="game-large-image">
+            </div>
+
+            <!-- Right: Game Info -->
+            <div class="game-info">
+                <h1 class="game-title">هجوله أونلاين</h1>
+                <p class="game-subtitle">لعبة سباق وت漂移احترافية مع لاعبين حقيقيين من جميع أنحاء العالم</p>
+
+                <!-- Rating -->
+                <div class="rating-section">
+                    <div class="stars">★★★★★</div>
+                    <span class="rating-text">4.8 (2500+ تقييم)</span>
+                </div>
+
+                <!-- Download Button -->
+                <button class="download-btn" onclick="downloadGame()">
+                    📥 تثبيت اللعبة مجاناً
+                </button>
+
+
+            </div>
+        </div>
+
+        <!-- Screenshots Section -->
+        <div class="screenshots-section">
+            <h2 class="section-title">🎮 لقطات من اللعبة</h2>
+            <div class="screenshots-gallery">
+                <div class="screenshot-item">
+                    <img src="game-screenshot.jpg" alt="لقطة من اللعبة 1">
+                </div>
+                <div class="screenshot-item">
+                    <img src="game-screenshot.jpg" alt="لقطة من اللعبة 2">
+                </div>
+                <div class="screenshot-item">
+                    <img src="game-screenshot.jpg" alt="لقطة من اللعبة 3">
+                </div>
+                <div class="screenshot-item">
+                    <img src="game-screenshot.jpg" alt="لقطة من اللعبة 4">
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <div class="feature-card">
+                <div class="feature-icon">🏎️</div>
+                <div class="feature-title">رسومات واقعية</div>
+                <div class="feature-description">رسومات ثلاثية الأبعاد عالية الجودة وواقعية تماماً</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <div class="feature-title">لعب متعدد</div>
+                <div class="feature-description">السباق مع لاعبين حقيقيين من جميع أنحاء العالم</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🚗</div>
+                <div class="feature-title">سيارات فاخرة</div>
+                <div class="feature-description">مجموعة واسعة من السيارات الفاخرة والرياضية</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🛣️</div>
+                <div class="feature-title">مسارات متنوعة</div>
+                <div class="feature-description">مسارات متعددة وتحديات مثيرة في مدن مختلفة</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">لعب سريع</div>
+                <div class="feature-description">سباقات سريعة ومشوقة وحركة مستمرة</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-title">تحديات يومية</div>
+                <div class="feature-description">تحديات يومية وأسبوعية وجوائز حصرية</div>
+            </div>
+        </div>
+
+        <!-- Description Section -->
+        <div class="description-section">
+            <h2 class="section-title">📖 الوصف</h2>
+            <p class="description-text">
+                هجوله أونلاين تحملك في رحلة مجنونة من السباقات والت漂移الحقيقي. مع آلاف اللاعبين النشطين حول العالم، ستعيش تجربة سباق فريدة لا تُنسى. تنافس مع لاعبين حقيقيين، اكسب النقاط، ارتقِ في الترتيبات وأصبح أسطورة الشوارع.
+            </p>
+            <p class="description-text">
+                اختر من مجموعة ضخمة من السيارات الفاخرة والرياضية، وخصصها حسب أسلوبك. استكشف مسارات متعددة في مدن مختلفة، واتقن مهارات التجويف والسباق. كل يوم جديد يحمل تحديات جديدة وفرصة للفوز بجوائز حصرية.
+            </p>
+            <p class="description-text">
+                تواصل مع أصدقائك والعب معهم، أو تحدى لاعبين عشوائيين من حول العالم. شارك أفضل لحظاتك مع المجتمع، وكن جزءاً من أكبر عائلة سباق أونلاين في الشرق الأوسط.
+            </p>
+        </div>
+
+<!-- Footer Section -->
+        <div class="footer-section">
+            <h2 class="section-title">🤝 انضم إلى مجتمعنا</h2>
+            
+            <div class="social-links">
+                <a href="https://discord.gg/BQuAmzC4dB" target="_blank" class="social-link">
+                    💬 Discord
+                </a>
+                <a href="https://www.tiktok.com/@hajolha" target="_blank" class="social-link">
+                    🎵 TikTok
+                </a>
+                <a href="https://instagram.com/team_mx" target="_blank" class="social-link">
+                    📸 Instagram
+                </a>
+                <a href="https://www.youtube.com/@Team_MXX" target="_blank" class="social-link">
+                    ▶️ YouTube
+                </a>
+            </div>
+
+            <p style="color: #aaa; font-size: 14px; margin-bottom: 20px;">
+                جميع الحقوق محفوظة © 2026 Team MX
+            </p>
+
+            <a href="index.html" class="back-link">← العودة للرئيسية</a>
+        </div>
+
+    </div>
+
+    <script>
+        function downloadGame() {
+            // استبدل الرابط برابط APK الحقيقي
+            const apkUrl = "https://your-server.com/hajoola-online.apk";
+            
+            // تحميل اللعبة
+            window.location.href = apkUrl;
+            
+            // رسالة توضيحية
+            setTimeout(() => {
+                alert("🎮 جاري تحميل اللعبة...\n\n📝 تأكد من تفعيل 'التثبيت من مصادر غير معروفة' في إعدادات جهازك");
+            }, 500);
+        }
+
+        // تأثير الـ scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.feature-card').forEach(el => {
+            el.style.opacity = '0.8';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
